@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/database.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/gitlab.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/java.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/maven.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/apachemaven.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/git.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/bitbucket.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/hibernate.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/maven.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/springio-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,7 @@
       <updated>1610012055158</updated>
       <workItem from="1610012058416" duration="3496000" />
       <workItem from="1610027054011" duration="908000" />
-      <workItem from="1610027982532" duration="2466000" />
+      <workItem from="1610027982532" duration="5624000" />
     </task>
     <servers />
   </component>
