@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/database.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/gitlab.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/java.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/maven.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +30,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images/icons" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Даурен\GitHub\daurentorekhanov.github.io\images\icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Даурен\GitHub\daurentorekhanov.github.io\images\icons" />
     </key>
@@ -41,7 +50,7 @@
       <updated>1610012055158</updated>
       <workItem from="1610012058416" duration="3496000" />
       <workItem from="1610027054011" duration="908000" />
-      <workItem from="1610027982532" duration="2157000" />
+      <workItem from="1610027982532" duration="2466000" />
     </task>
     <servers />
   </component>
