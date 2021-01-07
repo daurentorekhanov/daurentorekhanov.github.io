@@ -4710,3 +4710,22 @@ input[type="button"].btn--primary:focus {
         margin-right: 1.4rem;
     }
 }
+
+/* Technologies Section */
+.logo-container {
+    margin: 5rem auto;
+    max-width: 100vw;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.tech-text {
+    text-align: left;
+    /*margin-top: 10rem;*/
+}
+
+/*svg:hover {*/
+/*    transform: scale(1.05);*/
+/*    transition: 0.5s ease;*/
+/*}*/
