@@ -4718,14 +4718,11 @@ input[type="button"].btn--primary:focus {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+    text-align: center;
 }
-
+.caption {
+    display: block;
+}
 .tech-text {
     text-align: left;
-    /*margin-top: 10rem;*/
 }
-
-/*svg:hover {*/
-/*    transform: scale(1.05);*/
-/*    transition: 0.5s ease;*/
-/*}*/

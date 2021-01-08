@@ -2,16 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/icons/apachemaven.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/icons/git.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/images/intro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/images/intro.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/bitbucket.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/hibernate.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/maven.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/springio-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/database.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/database.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/icon-close.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/icon-close.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/java.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/java.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/wheel-2000.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
+    <disabled>
+      <disabled_changelists>
+        <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
+          <change afterPath="$PROJECT_DIR$/images/icons/apachemaven.svg" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/images/icons/git.svg" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/images/icons/bitbucket.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/images/icons/hibernate.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/images/icons/maven.svg" beforeDir="false" />
+          <change beforePath="$PROJECT_DIR$/images/icons/springio-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+        </list>
+      </disabled_changelists>
+      <disabled_trackers />
+    </disabled>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,10 +71,22 @@
       <workItem from="1610012058416" duration="3496000" />
       <workItem from="1610027054011" duration="908000" />
       <workItem from="1610027982532" duration="5624000" />
+      <workItem from="1610076495539" duration="3476000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
