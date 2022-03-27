@@ -2,34 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/images/intro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/images/intro.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/database.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/database.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/icon-close.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/icon-close.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icons/java.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/java.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/wheel-2000.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
-    <disabled>
-      <disabled_changelists>
-        <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
-          <change afterPath="$PROJECT_DIR$/images/icons/apachemaven.svg" afterDir="false" />
-          <change afterPath="$PROJECT_DIR$/images/icons/git.svg" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/images/icons/bitbucket.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/bitbucket.svg" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/images/icons/hibernate.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/hibernate.svg" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/images/icons/maven.svg" beforeDir="false" />
-          <change beforePath="$PROJECT_DIR$/images/icons/springio-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/icons/springio-icon.svg" afterDir="false" />
-          <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-        </list>
-      </disabled_changelists>
-      <disabled_trackers />
-    </disabled>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +13,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1mjfjJONdv4e7UpDTGTtXNTdqkA" />
   <component name="ProjectViewState">
@@ -50,6 +29,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.format.on.save.advertiser.fired" value="true" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/images/icons" />
   </component>
   <component name="RecentsManager">
@@ -72,6 +55,7 @@
       <workItem from="1610027054011" duration="908000" />
       <workItem from="1610027982532" duration="5624000" />
       <workItem from="1610076495539" duration="3476000" />
+      <workItem from="1648375588877" duration="885000" />
     </task>
     <servers />
   </component>
