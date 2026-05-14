@@ -1,22 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3de44a93-a214-4f34-84cf-16e3557a7cde" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/Dauren Torekhanov EN.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/Dauren Torekhanov EN.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/Dauren Torekhanov RU.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/Dauren Torekhanov RU.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-geo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android-chrome-192x192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android-chrome-512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/fontawesome-all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/images/intro.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/noscript.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/breakpoints.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/browser.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/jquery.scrollex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/jquery.scrolly.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/base/_page.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/base/_reset.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/base/_typography.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_actions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_box.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_button.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_contact.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_features.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_form.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_icon.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_image.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_menu.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_row.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_section.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_split.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_spotlights.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_table.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/components/_wrapper.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/layout/_footer.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/layout/_header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/layout/_intro.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/layout/_sidebar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/layout/_wrapper.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_breakpoints.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_functions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_html-grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_vars.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/libs/_vendor.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sass/noscript.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/vendor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elements.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/avatars/user-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/header-bg-3000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/apachemaven.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/bitbucket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/database.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/git.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/gitlab.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/hibernate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/icon-close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/icon-quote.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/icon-tag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/java.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/postgres.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/postgresql-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/springio-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pic06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/sample-image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/testimonials-bg-3000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/wheel-1000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/wheel-500.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/vendor/fontawesome/all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/site.webmanifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="111" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="1mjfjJONdv4e7UpDTGTtXNTdqkA" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -24,24 +154,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="go.format.on.save.advertiser.fired" value="true" />
-    <property name="go.formatter.settings.were.checked" value="true" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images/icons" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/new",
+    "git.auto.fetch.suggestion.counter": "1",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dauren/IdeaProjects/my/daurentorekhanov.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/files" />
       <recent name="F:\Даурен\GitHub\daurentorekhanov.github.io\images\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Даурен\GitHub\daurentorekhanov.github.io\images\icons" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,6 +207,8 @@
       <workItem from="1610027982532" duration="5624000" />
       <workItem from="1610076495539" duration="3476000" />
       <workItem from="1648375588877" duration="885000" />
+      <workItem from="1775038872912" duration="1649000" />
+      <workItem from="1778757724917" duration="1618000" />
     </task>
     <servers />
   </component>
