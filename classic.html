@@ -72,6 +72,28 @@
         .nav-btn:hover::before { opacity: 1; }
         .nav-btn:hover { transform: scale(1.15); border-color: transparent; box-shadow: 0 0 25px var(--accent-glow); }
         .nav-btn span { position: relative; z-index: 1; }
+        .lang-switch {
+            display: flex;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--bg-card);
+            overflow: hidden;
+            height: 48px;
+            align-items: stretch;
+        }
+        .lang-btn {
+            border: 0;
+            background: transparent;
+            color: var(--text);
+            padding: 0 12px;
+            font: 700 0.8rem 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: #fff;
+        }
 
         /* Particle canvas */
         #particles-canvas {
@@ -463,6 +485,8 @@
             .venture-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
             .floating-nav { top: 12px; right: 12px; gap: 8px; }
             .nav-btn { width: 42px; height: 42px; font-size: 1rem; }
+            .lang-switch { height: 42px; }
+            .lang-btn { padding: 0 9px; font-size: 0.72rem; }
             .cta-btn { padding: 0.75rem 1.8rem; font-size: 0.9rem; }
             .scroll-indicator { bottom: 24px; }
             .toast { font-size: 0.8rem; padding: 0.8rem 1.4rem; }
@@ -502,6 +526,8 @@
             .terminal-dot { width: 10px; height: 10px; }
             .floating-nav { top: 8px; right: 8px; gap: 6px; }
             .nav-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+            .lang-switch { height: 38px; }
+            .lang-btn { padding: 0 8px; font-size: 0.68rem; }
             .cta-btn { padding: 0.65rem 1.5rem; font-size: 0.85rem; }
             .cta-btn small { display: block; font-size: 0.65em; margin-left: 0; margin-top: 2px; }
             .toast { font-size: 0.75rem; padding: 0.7rem 1.2rem; bottom: 16px; }
@@ -541,9 +567,13 @@
 
 <!-- Floating navigation -->
 <nav class="floating-nav">
+    <div class="lang-switch" aria-label="Language">
+        <button class="lang-btn active" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" type="button" data-lang="ru">RU</button>
+    </div>
     <button class="nav-btn" id="themeToggle" title="Toggle theme"><span id="themeIcon">&#9789;</span></button>
     <button class="nav-btn" id="terminalBtn" title="Open terminal (Ctrl+`)"><span>&gt;_</span></button>
-    <a class="nav-btn" href="index.html" title="Chat mode"><span>💬</span></a>
+    <a class="nav-btn" href="index.html" title="Chat mode" id="chatModeLink"><span>💬</span></a>
     <a class="nav-btn" href="https://linkedin.com/in/torekhanov-dauren" target="_blank" rel="noopener noreferrer" title="LinkedIn"><span>in</span></a>
 </nav>
 
@@ -555,7 +585,7 @@
         <span id="typedText"></span><span class="typed-cursor"></span>
     </div>
     <div class="hero-meta">
-        <span>&#128205; Almaty, Kazakhstan</span>
+        <span id="heroLocation">&#128205; Almaty, Kazakhstan</span>
         <span>&bull;</span>
         <a href="https://daurentorekhanov.github.io" target="_blank" rel="noopener">daurentorekhanov.github.io</a>
         <span>&bull;</span>
@@ -563,14 +593,14 @@
     </div>
     <div class="hero-cta">
         <a href="files/Dauren%20Torekhanov%20EN.pdf" class="cta-btn" id="cvDownloadBtn" download>
-            <span>Download CV <small id="cvRegionLabel"></small></span>
+            <span id="cvDownloadText">Download CV</span>
         </a>
         <a href="https://linkedin.com/in/torekhanov-dauren" class="cta-btn secondary" target="_blank" rel="noopener noreferrer">
-            <span>LinkedIn</span>
+            <span id="linkedinText">LinkedIn</span>
         </a>
     </div>
     <div class="scroll-indicator">
-        <span>Explore</span>
+        <span id="exploreText">Explore</span>
         <div class="scroll-arrow"></div>
     </div>
 </section>
@@ -579,15 +609,15 @@
 <div class="stats-bar">
     <div class="stat-card">
         <div class="stat-number" data-count="6" data-suffix="+">0</div>
-        <div class="stat-label">Years Backend</div>
+        <div class="stat-label" id="statBackend">Years Backend</div>
     </div>
     <div class="stat-card">
         <div class="stat-number" data-count="5" data-suffix="+">0</div>
-        <div class="stat-label">Companies</div>
+        <div class="stat-label" id="statCompanies">Companies</div>
     </div>
     <div class="stat-card">
         <div class="stat-number" data-count="3" data-suffix="">0</div>
-        <div class="stat-label">Languages</div>
+        <div class="stat-label" id="statLanguages">Languages</div>
     </div>
 </div>
 
@@ -595,12 +625,12 @@
 <div class="content">
 
     <section class="section">
-        <h2 class="section-title">About</h2>
-        <p class="section-text">Experienced Technical Lead and Backend Engineer with 6+ years of expertise in designing scalable, resilient, and high-load distributed systems using Java, Kotlin, and the Spring ecosystem. I specialize in microservices architecture, event-driven systems, integrations, and backend platform modernization within banking and fintech.</p>
+        <h2 class="section-title" id="aboutTitle">About</h2>
+        <p class="section-text" id="aboutText">Experienced Technical Lead and Backend Engineer with 6+ years of expertise in designing scalable, resilient, and high-load distributed systems using Java, Kotlin, and the Spring ecosystem. I specialize in microservices architecture, event-driven systems, integrations, and backend platform modernization within banking and fintech.</p>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Key Technologies</h2>
+        <h2 class="section-title" id="skillsTitle">Key Technologies</h2>
         <div class="skills-grid">
             <div class="skill-tag"><span>Java</span></div>
             <div class="skill-tag"><span>Kotlin</span></div>
@@ -621,130 +651,130 @@
     </section>
 
     <section class="section">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title" id="experienceTitle">Experience</h2>
 
         <div class="exp-card">
             <div class="exp-role">Technical Leader</div>
             <div class="exp-company">Alatau City Bank &bull; 01.2025 &ndash; Present</div>
-            <div class="exp-subtitle">Backend Engineering &amp; Microservices Transformation</div>
+            <div class="exp-subtitle" id="exp1Subtitle">Backend Engineering &amp; Microservices Transformation</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Leading backend engineering initiatives and transformation from monolithic architecture to scalable microservices.</div>
-                <div class="impact-item">Defining architectural standards, service boundaries, and communication patterns.</div>
-                <div class="impact-item">Mentoring developers, conducting code reviews, and improving engineering best practices.</div>
+                <div class="impact-item" id="exp1Item1">Leading backend engineering initiatives and transformation from monolithic architecture to scalable microservices.</div>
+                <div class="impact-item" id="exp1Item2">Defining architectural standards, service boundaries, and communication patterns.</div>
+                <div class="impact-item" id="exp1Item3">Mentoring developers, conducting code reviews, and improving engineering best practices.</div>
             </div>
         </div>
 
         <div class="exp-card">
             <div class="exp-role">Senior Java Developer</div>
             <div class="exp-company">Jusan Bank &bull; 07.2022 &ndash; 12.2024</div>
-            <div class="exp-subtitle">Backend Platform Modernization</div>
+            <div class="exp-subtitle" id="exp2Subtitle">Backend Platform Modernization</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Developed microservices for core banking platforms using Java and Kotlin.</div>
-                <div class="impact-item">Integrated third-party systems with focus on reliability and maintainability.</div>
-                <div class="impact-item">Participated in gradual monolith decomposition into distributed services.</div>
+                <div class="impact-item" id="exp2Item1">Developed microservices for core banking platforms using Java and Kotlin.</div>
+                <div class="impact-item" id="exp2Item2">Integrated third-party systems with focus on reliability and maintainability.</div>
+                <div class="impact-item" id="exp2Item3">Participated in gradual monolith decomposition into distributed services.</div>
             </div>
         </div>
 
         <div class="exp-card">
             <div class="exp-role">Senior Java Developer</div>
             <div class="exp-company">Alfa-Bank Kazakhstan &bull; 12.2021 &ndash; 06.2022</div>
-            <div class="exp-subtitle">Banking Integrations</div>
+            <div class="exp-subtitle" id="exp3Subtitle">Banking Integrations</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Integrated external services into banking infrastructure.</div>
-                <div class="impact-item">Developed reusable backend microservices.</div>
-                <div class="impact-item">Contributed to backend reliability, scalability, and infrastructure automation.</div>
+                <div class="impact-item" id="exp3Item1">Integrated external services into banking infrastructure.</div>
+                <div class="impact-item" id="exp3Item2">Developed reusable backend microservices.</div>
+                <div class="impact-item" id="exp3Item3">Contributed to backend reliability, scalability, and infrastructure automation.</div>
             </div>
         </div>
 
         <div class="exp-card">
             <div class="exp-role">Java Backend Developer</div>
             <div class="exp-company">Alfa-Bank Kazakhstan &bull; 10.2020 &ndash; 12.2021</div>
-            <div class="exp-subtitle">Banking Backend Services</div>
+            <div class="exp-subtitle" id="exp4Subtitle">Banking Backend Services</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Developed backend services for banking infrastructure.</div>
-                <div class="impact-item">Participated in CI/CD process improvements and deployment automation.</div>
-                <div class="impact-item">Worked with background and scheduled processing systems.</div>
+                <div class="impact-item" id="exp4Item1">Developed backend services for banking infrastructure.</div>
+                <div class="impact-item" id="exp4Item2">Participated in CI/CD process improvements and deployment automation.</div>
+                <div class="impact-item" id="exp4Item3">Worked with background and scheduled processing systems.</div>
             </div>
         </div>
 
         <div class="exp-card">
             <div class="exp-role">Software Developer</div>
             <div class="exp-company">ICORE-Integration LLP &bull; 06.2019 &ndash; 09.2020</div>
-            <div class="exp-subtitle">Enterprise Backend Solutions</div>
+            <div class="exp-subtitle" id="exp5Subtitle">Enterprise Backend Solutions</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Developed enterprise software solutions for industrial companies and banks.</div>
-                <div class="impact-item">Built backend services and integrations using Java and Spring.</div>
+                <div class="impact-item" id="exp5Item1">Developed enterprise software solutions for industrial companies and banks.</div>
+                <div class="impact-item" id="exp5Item2">Built backend services and integrations using Java and Spring.</div>
             </div>
         </div>
 
         <div class="exp-card">
-            <div class="exp-role">Information Systems Support Manager</div>
+            <div class="exp-role" id="exp6Role">Information Systems Support Manager</div>
             <div class="exp-company">Altyn Bank &bull; 08.2018 &ndash; 06.2019</div>
-            <div class="exp-subtitle">Banking Information Systems</div>
+            <div class="exp-subtitle" id="exp6Subtitle">Banking Information Systems</div>
             <div class="exp-toggle" onclick="toggleCard(this)">
                 Show details <span class="exp-toggle-arrow">&#9660;</span>
             </div>
             <div class="exp-details">
-                <div class="impact-item">Supported and maintained banking information systems.</div>
-                <div class="impact-item">Participated in operational monitoring and issue resolution.</div>
+                <div class="impact-item" id="exp6Item1">Supported and maintained banking information systems.</div>
+                <div class="impact-item" id="exp6Item2">Participated in operational monitoring and issue resolution.</div>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Engineering Focus</h2>
+        <h2 class="section-title" id="focusTitle">Engineering Focus</h2>
         <div class="venture-card">
             <div class="venture-icon">&#9881;</div>
             <div>
-                <div class="venture-name">Reliable Backend Platforms</div>
-                <div class="venture-desc">Microservices, distributed systems, banking integrations, technical leadership, and engineering best practices.</div>
+                <div class="venture-name" id="focusName">Reliable Backend Platforms</div>
+                <div class="venture-desc" id="focusDesc">Microservices, distributed systems, banking integrations, technical leadership, and engineering best practices.</div>
                 <a href="https://daurentorekhanov.github.io" class="venture-link" target="_blank" rel="noopener">daurentorekhanov.github.io &#8599;</a>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Education</h2>
+        <h2 class="section-title" id="educationTitle">Education</h2>
         <div class="edu-card">
-            <div class="edu-degree">Master's Degree — Computer Science and Software</div>
-            <div class="edu-school">Kazakh Academy of Transport and Communications (KazATC), 2017–2019</div>
+            <div class="edu-degree" id="edu1Degree">Master's Degree — Computer Science and Software</div>
+            <div class="edu-school" id="edu1School">Kazakh Academy of Transport and Communications (KazATC), 2017–2019</div>
         </div>
         <div class="edu-card">
-            <div class="edu-degree">Bachelor's Degree — Radio Engineering &amp; Electronics</div>
-            <div class="edu-school">Almaty University of Power Engineering and Telecommunications, 2013–2017</div>
+            <div class="edu-degree" id="edu2Degree">Bachelor's Degree — Radio Engineering &amp; Electronics</div>
+            <div class="edu-school" id="edu2School">Almaty University of Power Engineering and Telecommunications, 2013–2017</div>
         </div>
         <div class="edu-card">
-            <div class="edu-degree">Bachelor's Degree — Economics</div>
-            <div class="edu-school">Moscow Power Engineering Institute, 2014–2017</div>
+            <div class="edu-degree" id="edu3Degree">Bachelor's Degree — Economics</div>
+            <div class="edu-school" id="edu3School">Moscow Power Engineering Institute, 2014–2017</div>
         </div>
     </section>
 
     <!-- Playground -->
     <section class="section">
         <h2 class="section-title">
-            Playground
+            <span id="playgroundTitle">Playground</span>
             <button class="playground-toggle-btn" id="playgroundToggleBtn" onclick="togglePlayground()">
                 Show &#9660;
             </button>
         </h2>
         <div class="playground-content" id="playgroundContent">
             <div class="fun-zone">
-                <h3>Go ahead, push some buttons</h3>
+                <h3 id="playgroundHeading">Go ahead, push some buttons</h3>
                 <div class="fun-buttons">
                     <button class="fun-btn" onclick="launchConfetti(event)"><span>Confetti!</span></button>
                     <button class="fun-btn" onclick="goGravity()"><span>Gravity Balls</span></button>
@@ -769,8 +799,8 @@
             <div class="terminal-title">dauren@torekhanov:~</div>
         </div>
         <div class="terminal-body" id="terminalBody">
-            <div class="line"><span class="accent">Welcome to Dauren's terminal!</span></div>
-            <div class="line">Type <span class="warn">help</span> to see available commands.</div>
+            <div class="line" id="terminalWelcome"><span class="accent">Welcome to Dauren's terminal!</span></div>
+            <div class="line" id="terminalHint">Type <span class="warn">help</span> to see available commands.</div>
         </div>
         <div class="terminal-input-line" style="padding: 0 1.5rem 1rem;">
             <span class="prompt" style="color:#9ece6a">$</span>
@@ -782,10 +812,159 @@
 <div class="toast" id="toast"></div>
 
 <footer>
-    Built with passion &bull; <a href="https://daurentorekhanov.github.io" target="_blank" rel="noopener noreferrer">daurentorekhanov.github.io</a> &bull; <a href="https://linkedin.com/in/torekhanov-dauren" target="_blank" rel="noopener noreferrer">LinkedIn</a> &bull; <a href="mailto:dauren.work@gmail.com">Email</a> &bull; Dauren Torekhanov
+    <span id="footerBuilt">Built with passion</span> &bull; <a href="https://daurentorekhanov.github.io" target="_blank" rel="noopener noreferrer">daurentorekhanov.github.io</a> &bull; <a href="https://linkedin.com/in/torekhanov-dauren" target="_blank" rel="noopener noreferrer">LinkedIn</a> &bull; <a href="mailto:dauren.work@gmail.com" id="footerEmail">Email</a> &bull; <span id="footerName">Dauren Torekhanov</span>
 </footer>
 
 <script>
+// ===================== LOCALIZATION =====================
+const CV = {
+    en: 'files/Dauren%20Torekhanov%20EN.pdf',
+    ru: 'files/Dauren%20Torekhanov%20RU.pdf',
+};
+let currentLang = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+const titleSets = {
+    en: ['Technical Lead', 'Senior Backend Engineer', 'Java / Kotlin Engineer', 'Banking Systems Engineer', 'Team Leader'],
+    ru: ['Technical Lead', 'Senior Backend Engineer', 'Java / Kotlin Engineer', 'Banking Systems Engineer', 'Team Leader'],
+};
+const classicI18n = {
+    en: {
+        title: 'Dauren Torekhanov | Technical Lead / Senior Backend Engineer',
+        heroName: 'Dauren Torekhanov',
+        heroLocation: '📍 Almaty, Kazakhstan',
+        download: 'Download CV',
+        exploreText: 'Explore',
+        statBackend: 'Years Backend',
+        statCompanies: 'Companies',
+        statLanguages: 'Languages',
+        aboutTitle: 'About',
+        aboutText: 'Experienced Technical Lead and Backend Engineer with 6+ years of expertise in designing scalable, resilient, and high-load distributed systems using Java, Kotlin, and the Spring ecosystem. I specialize in microservices architecture, event-driven systems, integrations, and backend platform modernization within banking and fintech.',
+        skillsTitle: 'Key Technologies',
+        experienceTitle: 'Experience',
+        show: 'Show details',
+        hide: 'Hide details',
+        exp1Subtitle: 'Backend Engineering & Microservices Transformation',
+        exp1Item1: 'Leading backend engineering initiatives and transformation from monolithic architecture to scalable microservices.',
+        exp1Item2: 'Defining architectural standards, service boundaries, and communication patterns.',
+        exp1Item3: 'Mentoring developers, conducting code reviews, and improving engineering best practices.',
+        exp2Subtitle: 'Backend Platform Modernization',
+        exp2Item1: 'Developed microservices for core banking platforms using Java and Kotlin.',
+        exp2Item2: 'Integrated third-party systems with focus on reliability and maintainability.',
+        exp2Item3: 'Participated in gradual monolith decomposition into distributed services.',
+        exp3Subtitle: 'Banking Integrations',
+        exp3Item1: 'Integrated external services into banking infrastructure.',
+        exp3Item2: 'Developed reusable backend microservices.',
+        exp3Item3: 'Contributed to backend reliability, scalability, and infrastructure automation.',
+        exp4Subtitle: 'Banking Backend Services',
+        exp4Item1: 'Developed backend services for banking infrastructure.',
+        exp4Item2: 'Participated in CI/CD process improvements and deployment automation.',
+        exp4Item3: 'Worked with background and scheduled processing systems.',
+        exp5Subtitle: 'Enterprise Backend Solutions',
+        exp5Item1: 'Developed enterprise software solutions for industrial companies and banks.',
+        exp5Item2: 'Built backend services and integrations using Java and Spring.',
+        exp6Role: 'Information Systems Support Manager',
+        exp6Subtitle: 'Banking Information Systems',
+        exp6Item1: 'Supported and maintained banking information systems.',
+        exp6Item2: 'Participated in operational monitoring and issue resolution.',
+        focusTitle: 'Engineering Focus',
+        focusName: 'Reliable Backend Platforms',
+        focusDesc: 'Microservices, distributed systems, banking integrations, technical leadership, and engineering best practices.',
+        educationTitle: 'Education',
+        edu1Degree: "Master's Degree — Computer Science and Software",
+        edu1School: 'Kazakh Academy of Transport and Communications (KazATC), 2017–2019',
+        edu2Degree: "Bachelor's Degree — Radio Engineering & Electronics",
+        edu2School: 'Almaty University of Power Engineering and Telecommunications, 2013–2017',
+        edu3Degree: "Bachelor's Degree — Economics",
+        edu3School: 'Moscow Power Engineering Institute, 2014–2017',
+        playgroundTitle: 'Playground',
+        playgroundHeading: 'Go ahead, push some buttons',
+        terminalWelcome: "<span class=\"accent\">Welcome to Dauren's terminal!</span>",
+        terminalHint: 'Type <span class="warn">help</span> to see available commands.',
+        footerBuilt: 'Built with passion',
+        footerEmail: 'Email',
+        footerName: 'Dauren Torekhanov',
+    },
+    ru: {
+        title: 'Даурен Тореханов | Technical Lead / Senior Backend Engineer',
+        heroName: 'Даурен Тореханов',
+        heroLocation: '📍 Алматы, Казахстан',
+        download: 'Скачать резюме',
+        exploreText: 'Смотреть',
+        statBackend: 'Лет backend',
+        statCompanies: 'Компаний',
+        statLanguages: 'Языка',
+        aboutTitle: 'О себе',
+        aboutText: 'Опытный Technical Lead и Backend-разработчик с более чем 6-летним опытом проектирования и разработки масштабируемых, отказоустойчивых и высоконагруженных систем на Java/Kotlin и Spring Ecosystem. Специализируюсь на микросервисной архитектуре, распределённых системах, event-driven подходе, интеграциях и модернизации backend-платформ в banking и fintech.',
+        skillsTitle: 'Ключевые технологии',
+        experienceTitle: 'Опыт работы',
+        show: 'Показать детали',
+        hide: 'Скрыть детали',
+        exp1Subtitle: 'Backend-разработка и микросервисная трансформация',
+        exp1Item1: 'Руководство backend-разработкой и трансформацией монолитной архитектуры в масштабируемые микросервисы.',
+        exp1Item2: 'Определение архитектурных стандартов, service boundaries и паттернов взаимодействия сервисов.',
+        exp1Item3: 'Менторинг разработчиков, проведение code review и развитие инженерных практик.',
+        exp2Subtitle: 'Модернизация backend-платформы',
+        exp2Item1: 'Разработка микросервисов для core banking платформы на Java и Kotlin.',
+        exp2Item2: 'Интеграция сторонних систем с фокусом на стабильность и поддерживаемость.',
+        exp2Item3: 'Участие в постепенной декомпозиции монолита на распределённые сервисы.',
+        exp3Subtitle: 'Банковские интеграции',
+        exp3Item1: 'Интеграция внешних сервисов в банковскую инфраструктуру.',
+        exp3Item2: 'Разработка переиспользуемых backend-микросервисов.',
+        exp3Item3: 'Улучшение надёжности, масштабируемости и автоматизации инфраструктуры.',
+        exp4Subtitle: 'Backend-сервисы для банка',
+        exp4Item1: 'Разработка backend-сервисов для банковской инфраструктуры.',
+        exp4Item2: 'Участие в улучшении CI/CD и автоматизации deployment-процессов.',
+        exp4Item3: 'Работа с background и scheduled processing системами.',
+        exp5Subtitle: 'Enterprise backend-решения',
+        exp5Item1: 'Разработка enterprise-решений для промышленных компаний и банков.',
+        exp5Item2: 'Разработка backend-сервисов и интеграций на Java и Spring.',
+        exp6Role: 'Менеджер сопровождения информационных систем',
+        exp6Subtitle: 'Банковские информационные системы',
+        exp6Item1: 'Сопровождение и поддержка банковских информационных систем.',
+        exp6Item2: 'Мониторинг и решение технических инцидентов.',
+        focusTitle: 'Инженерный фокус',
+        focusName: 'Надёжные backend-платформы',
+        focusDesc: 'Микросервисы, распределённые системы, банковские интеграции, техническое лидерство и engineering best practices.',
+        educationTitle: 'Образование',
+        edu1Degree: 'Магистратура — Вычислительная техника и программное обеспечение',
+        edu1School: 'Казахская академия транспорта и коммуникаций (КазАТК), 2017–2019',
+        edu2Degree: 'Бакалавр — Радиотехника и электроника',
+        edu2School: 'Алматинский университет энергетики и связи (АУЭС), 2013–2017',
+        edu3Degree: 'Бакалавр — Экономика',
+        edu3School: 'Московский энергетический институт (МЭИ), 2014–2017',
+        playgroundTitle: 'Playground',
+        playgroundHeading: 'Можно нажимать кнопки',
+        terminalWelcome: '<span class="accent">Терминал Даурена</span>',
+        terminalHint: 'Введите <span class="warn">help</span>, чтобы увидеть команды.',
+        footerBuilt: 'Сделано с вниманием',
+        footerEmail: 'Email',
+        footerName: 'Даурен Тореханов',
+    },
+};
+function applyClassicLang(next=currentLang){
+    currentLang = next === 'ru' ? 'ru' : 'en';
+    document.documentElement.lang = currentLang;
+    document.title = classicI18n[currentLang].title;
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang === currentLang));
+    document.getElementById('chatModeLink').href = currentLang === 'ru' ? 'index.html?lang=ru' : 'index.html';
+    document.getElementById('cvDownloadBtn').href = CV[currentLang];
+    document.getElementById('cvDownloadText').textContent = classicI18n[currentLang].download;
+    Object.entries(classicI18n[currentLang]).forEach(([id,value])=>{
+        const el = document.getElementById(id);
+        if(!el) return;
+        if(value.includes('<')) el.innerHTML = value;
+        else el.textContent = value;
+    });
+    document.querySelectorAll('.exp-toggle').forEach(toggle=>{
+        const card = toggle.closest('.exp-card');
+        toggle.childNodes[0].textContent = (card.classList.contains('open') ? classicI18n[currentLang].hide : classicI18n[currentLang].show) + ' ';
+    });
+    if(typeof titles !== 'undefined'){
+        titles = titleSets[currentLang];
+        tIdx = 0; cIdx = 0; isDel = false;
+    }
+}
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyClassicLang(btn.dataset.lang)));
+
 // ===================== PARTICLES =====================
 const pCanvas = document.getElementById('particles-canvas');
 const pCtx = pCanvas.getContext('2d');
@@ -838,9 +1017,10 @@ for (let i = 0; i < (isMobile ? 30 : 80); i++) particles.push(new Particle());
 })();
 
 // ===================== TYPING EFFECT =====================
-const titles = ['Technical Lead', 'Senior Backend Engineer', 'Java / Kotlin Engineer', 'Banking Systems Engineer', 'Team Leader'];
+let titles = titleSets[currentLang];
 let tIdx = 0, cIdx = 0, isDel = false;
 const typedEl = document.getElementById('typedText');
+applyClassicLang(currentLang);
 (function typeLoop() {
     const cur = titles[tIdx];
     if (!isDel) {
@@ -894,7 +1074,7 @@ document.querySelectorAll('.stat-card').forEach(card => {
 function toggleCard(toggle) {
     const card = toggle.closest('.exp-card');
     card.classList.toggle('open');
-    toggle.childNodes[0].textContent = card.classList.contains('open') ? 'Hide details ' : 'Show details ';
+    toggle.childNodes[0].textContent = (card.classList.contains('open') ? classicI18n[currentLang].hide : classicI18n[currentLang].show) + ' ';
 }
 
 // ===================== SKILL CLICK =====================
@@ -1093,18 +1273,26 @@ function closeTerm(){termOverlay.classList.remove('open');}
 termOverlay.addEventListener('click',e=>{if(e.target===termOverlay)closeTerm();});
 
 const cmds={
-    help:()=>`Available commands:\n<span class="warn">about</span>    - Who is Dauren?\n<span class="warn">skills</span>   - Technical skills\n<span class="warn">exp</span>      - Experience timeline\n<span class="warn">joke</span>     - Dev joke\n<span class="warn">matrix</span>   - Toggle matrix rain\n<span class="warn">party</span>    - Confetti!\n<span class="warn">clear</span>    - Clear terminal\n<span class="warn">exit</span>     - Close terminal`,
-    about:()=>`<span class="accent">Dauren Torekhanov</span> — Technical Lead / Senior Backend Engineer\n6+ years of commercial backend development experience.\nBased in Almaty, Kazakhstan. Focused on banking, fintech, distributed systems, and microservices.`,
-    skills:()=>`<span class="accent">Languages:</span> Java, Kotlin\n<span class="accent">Frameworks:</span> Spring Boot, Spring Ecosystem, Quarkus\n<span class="accent">Architecture:</span> Microservices, distributed systems, event-driven architecture\n<span class="accent">Data:</span> PostgreSQL, Redis, RabbitMQ\n<span class="accent">DevOps:</span> Kubernetes, Docker, Rancher, GitLab CI/CD`,
-    exp:()=>`<span class="accent">2025-now</span>  Alatau City Bank (Technical Leader)\n<span class="accent">2022-2024</span> Jusan Bank (Senior Java Developer)\n<span class="accent">2021-2022</span> Alfa-Bank Kazakhstan (Senior Java Developer)\n<span class="accent">2020-2021</span> Alfa-Bank Kazakhstan (Java Backend Developer)\n<span class="accent">2019-2020</span> ICORE-Integration LLP (Software Developer)\n<span class="accent">2018-2019</span> Altyn Bank (Information Systems Support)`,
+    help:()=> currentLang === 'ru'
+        ? `Доступные команды:\n<span class="warn">about</span>    - кто такой Даурен\n<span class="warn">skills</span>   - технические навыки\n<span class="warn">exp</span>      - опыт работы\n<span class="warn">joke</span>     - dev-шутка\n<span class="warn">matrix</span>   - включить Matrix rain\n<span class="warn">party</span>    - конфетти\n<span class="warn">clear</span>    - очистить терминал\n<span class="warn">exit</span>     - закрыть терминал`
+        : `Available commands:\n<span class="warn">about</span>    - Who is Dauren?\n<span class="warn">skills</span>   - Technical skills\n<span class="warn">exp</span>      - Experience timeline\n<span class="warn">joke</span>     - Dev joke\n<span class="warn">matrix</span>   - Toggle matrix rain\n<span class="warn">party</span>    - Confetti!\n<span class="warn">clear</span>    - Clear terminal\n<span class="warn">exit</span>     - Close terminal`,
+    about:()=> currentLang === 'ru'
+        ? `<span class="accent">Даурен Тореханов</span> — Technical Lead / Senior Backend Engineer\n6+ лет коммерческого опыта backend-разработки.\nАлматы, Казахстан. Фокус: banking, fintech, distributed systems и microservices.`
+        : `<span class="accent">Dauren Torekhanov</span> — Technical Lead / Senior Backend Engineer\n6+ years of commercial backend development experience.\nBased in Almaty, Kazakhstan. Focused on banking, fintech, distributed systems, and microservices.`,
+    skills:()=> currentLang === 'ru'
+        ? `<span class="accent">Языки:</span> Java, Kotlin\n<span class="accent">Фреймворки:</span> Spring Boot, Spring Ecosystem, Quarkus\n<span class="accent">Архитектура:</span> Microservices, distributed systems, event-driven architecture\n<span class="accent">Data:</span> PostgreSQL, Redis, RabbitMQ\n<span class="accent">DevOps:</span> Kubernetes, Docker, Rancher, GitLab CI/CD`
+        : `<span class="accent">Languages:</span> Java, Kotlin\n<span class="accent">Frameworks:</span> Spring Boot, Spring Ecosystem, Quarkus\n<span class="accent">Architecture:</span> Microservices, distributed systems, event-driven architecture\n<span class="accent">Data:</span> PostgreSQL, Redis, RabbitMQ\n<span class="accent">DevOps:</span> Kubernetes, Docker, Rancher, GitLab CI/CD`,
+    exp:()=> currentLang === 'ru'
+        ? `<span class="accent">2025-now</span>  Alatau City Bank (Technical Leader)\n<span class="accent">2022-2024</span> Jusan Bank (Senior Java Developer)\n<span class="accent">2021-2022</span> Alfa-Bank Kazakhstan (Senior Java Developer)\n<span class="accent">2020-2021</span> Alfa-Bank Kazakhstan (Java Backend Developer)\n<span class="accent">2019-2020</span> ICORE-Integration LLP (Software Developer)\n<span class="accent">2018-2019</span> Altyn Bank (сопровождение ИС)`
+        : `<span class="accent">2025-now</span>  Alatau City Bank (Technical Leader)\n<span class="accent">2022-2024</span> Jusan Bank (Senior Java Developer)\n<span class="accent">2021-2022</span> Alfa-Bank Kazakhstan (Senior Java Developer)\n<span class="accent">2020-2021</span> Alfa-Bank Kazakhstan (Java Backend Developer)\n<span class="accent">2019-2020</span> ICORE-Integration LLP (Software Developer)\n<span class="accent">2018-2019</span> Altyn Bank (Information Systems Support)`,
     joke:()=>{
         const j=["Why do programmers prefer dark mode? Because light attracts bugs.",'A SQL query walks into a bar: "Can I JOIN you?"',"!false — it's funny because it's true.","Why do Java devs wear glasses? Because they can't C#.","There are 10 types of people: those who understand binary and those who don't."];
         return j[Math.floor(Math.random()*j.length)];
     },
-    matrix:()=>{matrixRain();return 'Matrix toggled.';},
-    party:()=>{launchConfetti({clientX:innerWidth/2,clientY:innerHeight/2});return 'Confetti!';},
+    matrix:()=>{matrixRain();return currentLang === 'ru' ? 'Matrix переключен.' : 'Matrix toggled.';},
+    party:()=>{launchConfetti({clientX:innerWidth/2,clientY:innerHeight/2});return currentLang === 'ru' ? 'Конфетти!' : 'Confetti!';},
     clear:()=>'CLEAR',
-    exit:()=>{closeTerm();return 'Bye!';},
+    exit:()=>{closeTerm();return currentLang === 'ru' ? 'Пока!' : 'Bye!';},
 };
 
 termInput.addEventListener('keydown',e=>{
@@ -1120,7 +1308,9 @@ termInput.addEventListener('keydown',e=>{
         else{const o=document.createElement('div');o.className='line';o.innerHTML=res;termBody.appendChild(o);}
     } else {
         const o=document.createElement('div');o.className='line';
-        o.innerHTML=`Command not found: <span class="warn">${cmd}</span>. Type <span class="warn">help</span>.`;
+        o.innerHTML=currentLang === 'ru'
+            ? `Команда не найдена: <span class="warn">${cmd}</span>. Введите <span class="warn">help</span>.`
+            : `Command not found: <span class="warn">${cmd}</span>. Type <span class="warn">help</span>.`;
         termBody.appendChild(o);
     }
     termBody.scrollTop=termBody.scrollHeight;
@@ -1154,7 +1344,7 @@ addEventListener('mousemove',e=>{
     const greetings={'RU':['Привет! Рад видеть тебя здесь','🇷🇺'],'KZ':['Салем! Қош келдіңіз','🇰🇿'],'US':['Hey! Welcome to my page','🇺🇸'],'GB':['Hello! Glad you stopped by','🇬🇧'],'DE':['Hallo! Willkommen','🇩🇪'],'FR':['Salut! Bienvenue','🇫🇷'],'JP':['こんにちは！ようこそ','🇯🇵'],'CN':['你好！欢迎','🇨🇳'],'IN':['Namaste! Welcome','🇮🇳'],'BR':['Olá! Bem-vindo','🇧🇷'],'TR':['Merhaba! Hoş geldiniz','🇹🇷'],'UZ':['Salom! Xush kelibsiz','🇺🇿'],'KG':['Салам! Кош келиңиз','🇰🇬'],'UA':['Привіт! Ласкаво прошу','🇺🇦'],'PL':['Cześć! Witam','🇵🇱'],'AE':['أهلاً! مرحباً بك','🇦🇪'],'SA':['أهلاً! مرحباً بك','🇸🇦'],'ES':['¡Hola! Bienvenido','🇪🇸'],'IT':['Ciao! Benvenuto','🇮🇹'],'NL':['Hallo! Welkom','🇳🇱'],'KR':['안녕하세요! 환영합니다','🇰🇷'],'CA':['Hey! Welcome','🇨🇦'],'QA':['أهلاً! مرحباً بك','🇶🇦']};
     const euC=['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','NO','CH','GB','IS'];
     const uaeC=['AE','SA','QA','BH','KW','OM'], usC=['US','CA'];
-    const cvFiles={us:{file:'files/Dauren%20Torekhanov%20EN.pdf',label:'(EN)'},eu:{file:'files/Dauren%20Torekhanov%20EN.pdf',label:'(EN)'},uae:{file:'files/Dauren%20Torekhanov%20EN.pdf',label:'(EN)'},global:{file:'files/Dauren%20Torekhanov%20EN.pdf',label:'(EN)'}};
+    const cvFiles={us:{file:CV[currentLang],label:''},eu:{file:CV[currentLang],label:''},uae:{file:CV[currentLang],label:''},global:{file:CV[currentLang],label:''}};
     function getRegion(c){if(usC.includes(c))return 'us';if(euC.includes(c))return 'eu';if(uaeC.includes(c))return 'uae';return 'global';}
     fetch('https://ipapi.co/json/').then(r=>r.json()).then(data=>{
         if(data.error)return;
@@ -1164,7 +1354,6 @@ addEventListener('mousemove',e=>{
         setTimeout(()=>el.classList.add('visible'),300);
         const cv=cvFiles[getRegion(code)];
         document.getElementById('cvDownloadBtn').href=cv.file;
-        document.getElementById('cvRegionLabel').textContent=cv.label;
     }).catch(()=>{});
 })();
 </script>

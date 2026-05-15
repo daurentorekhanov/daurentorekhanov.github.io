@@ -36,6 +36,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .head-acts{display:flex;gap:8px;flex-shrink:0}
 .head-btn{padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:600;text-decoration:none;border:1px solid var(--border);color:var(--text);transition:all .2s;white-space:nowrap}
 .head-btn:hover{border-color:var(--ac);color:var(--bright);background:rgba(59,130,246,.1)}
+.lang-switch{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;flex-shrink:0}
+.lang-btn{padding:6px 10px;border:0;background:transparent;color:var(--text);font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;cursor:pointer;transition:all .2s}
+.lang-btn.active{background:var(--grad);color:#fff}
 
 /* MESSAGES */
 .messages{flex:1;overflow-y:auto;padding:20px 20px 28px;display:flex;flex-direction:column;gap:16px}
@@ -139,6 +142,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   .av{width:36px;height:36px;font-size:.78rem}
   .head-name{font-size:.9rem}
   .head-btn.hide-sm{display:none}
+  .lang-btn{padding:6px 8px}
   .messages{padding:14px;gap:12px}
   .msg-bubble{font-size:.88rem;padding:10px 14px}
   .ichips{padding-left:0}
@@ -167,12 +171,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <header class="head">
       <div class="av">DT</div>
       <div class="head-info">
-        <div class="head-name">Dauren Torekhanov</div>
-        <div class="head-sub">Technical Lead / Senior Backend Engineer &nbsp;<span class="dot"></span>&nbsp;<span class="status">available</span></div>
+        <div class="head-name" id="headName">Dauren Torekhanov</div>
+        <div class="head-sub" id="headSub">Technical Lead / Senior Backend Engineer &nbsp;<span class="dot"></span>&nbsp;<span class="status">available</span></div>
       </div>
       <div class="head-acts">
-        <a href="classic.html" class="head-btn hide-sm">Classic CV</a>
-        <a href="files/Dauren%20Torekhanov%20EN.pdf" download class="head-btn">&#8595; CV</a>
+        <div class="lang-switch" aria-label="Language">
+          <button class="lang-btn active" type="button" data-lang="en">EN</button>
+          <button class="lang-btn" type="button" data-lang="ru">RU</button>
+        </div>
+        <a href="classic.html" class="head-btn hide-sm" id="classicLink">Classic CV</a>
+        <a href="files/Dauren%20Torekhanov%20EN.pdf" download class="head-btn" id="headCvBtn">&#8595; CV</a>
       </div>
     </header>
     <div class="messages" id="msgs"></div>
@@ -192,6 +200,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function ts(){ return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false}); }
+const CV = {
+  en:{pdf:'files/Dauren%20Torekhanov%20EN.pdf', docx:'files/Dauren%20Torekhanov%20EN.docx'},
+  ru:{pdf:'files/Dauren%20Torekhanov%20RU.pdf', docx:'files/Dauren%20Torekhanov%20RU.docx'},
+};
+let lang = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+function cvFile(type='pdf'){ return CV[lang][type]; }
+function setLang(next, rerender=true){
+  lang = next === 'ru' ? 'ru' : 'en';
+  document.documentElement.lang = lang;
+  document.title = lang === 'ru' ? 'Даурен Тореханов • Интерактивное CV' : 'Dauren Torekhanov • Interactive CV';
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang === lang));
+  document.getElementById('headName').textContent = lang === 'ru' ? 'Даурен Тореханов' : 'Dauren Torekhanov';
+  document.getElementById('headSub').innerHTML = lang === 'ru'
+    ? 'Technical Lead / Senior Backend Engineer &nbsp;<span class="dot"></span>&nbsp;<span class="status">доступен</span>'
+    : 'Technical Lead / Senior Backend Engineer &nbsp;<span class="dot"></span>&nbsp;<span class="status">available</span>';
+  document.getElementById('classicLink').textContent = lang === 'ru' ? 'Классическое CV' : 'Classic CV';
+  document.getElementById('classicLink').href = lang === 'ru' ? 'classic.html?lang=ru' : 'classic.html';
+  document.getElementById('headCvBtn').href = cvFile('pdf');
+  document.getElementById('inp').placeholder = lang === 'ru' ? 'Введите /help или команду…' : 'Type /help or a command…';
+  document.getElementById('snd').textContent = lang === 'ru' ? 'Отправить' : 'Send';
+  if(rerender) restartIntro();
+}
 
 // ── SCROLL ─────────────────────────────────────────────────────────────
 const msgsEl = document.getElementById('msgs');
@@ -343,7 +373,7 @@ function renderBlock(container, block, si){
 function addTypingGroup(){
   const g = document.createElement('div');
   g.className = 'msg-group bot';
-  g.innerHTML = `<div class="msg-av">AD</div><div class="msg-body"><div class="msg-bubble"><div class="typing-ind"><div class="td"></div><div class="td"></div><div class="td"></div></div></div></div>`;
+  g.innerHTML = `<div class="msg-av">DT</div><div class="msg-body"><div class="msg-bubble"><div class="typing-ind"><div class="td"></div><div class="td"></div><div class="td"></div></div></div></div>`;
   msgsEl.appendChild(g); smartScroll();
   return g;
 }
@@ -416,7 +446,22 @@ function addUserMsg(text){
 const CMDS = {};
 
 CMDS['/help'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Вот что можно узнать о Даурене:"},
+    {type:'list', items:[
+      '/about — кратко обо мне',
+      '/experience — опыт работы',
+      '/skills — технологический стек',
+      '/education — образование',
+      '/projects — инженерный фокус',
+      '/stats — карьера в цифрах',
+      '/contact — контакты',
+      '/download — скачать резюме',
+      '/fun — интерактивная зона',
+      '/joke — dev-шутка',
+      '/clear — очистить диалог',
+    ]},
+  ] : [
     {type:'text', text:"Here's everything you can ask about Dauren:"},
     {type:'list', items:[
       '/about — personal intro & overview',
@@ -436,7 +481,11 @@ CMDS['/help'] = ()=>({
 });
 
 CMDS['/about'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Я Даурен Тореханов — Technical Lead и Senior Backend Engineer."},
+    {type:'text', text:"У меня 6+ лет коммерческого опыта backend-разработки: проектирование масштабируемых, отказоустойчивых и высоконагруженных систем на Java, Kotlin и Spring Ecosystem."},
+    {type:'text', text:"Живу в Алматы, Казахстан. Основной фокус — banking и fintech, микросервисная архитектура, распределённые системы, event-driven подход, интеграции и модернизация backend-платформ."},
+  ] : [
     {type:'text', text:"I'm Dauren Torekhanov — Technical Lead and Senior Backend Engineer."},
     {type:'text', text:"I have 6+ years of commercial backend experience designing scalable, resilient, high-load distributed systems with Java, Kotlin, and the Spring ecosystem."},
     {type:'text', text:"Based in Almaty, Kazakhstan. My background is strongest in banking and fintech, microservices architecture, event-driven systems, integrations, and backend platform modernization."},
@@ -445,7 +494,16 @@ CMDS['/about'] = ()=>({
 });
 
 CMDS['/skills'] = CMDS['/tech'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Мой основной стек:"},
+    {type:'skill-section', label:'Языки',              tags:['Java','Kotlin']},
+    {type:'skill-section', label:'Фреймворки',         tags:['Spring Boot','Spring Ecosystem','Quarkus']},
+    {type:'skill-section', label:'Архитектура',        tags:['Microservices','Distributed Systems','Event-Driven Architecture','System Design','REST APIs']},
+    {type:'skill-section', label:'Messaging & Cache',  tags:['RabbitMQ','Redis']},
+    {type:'skill-section', label:'Базы данных',        tags:['PostgreSQL','SQL Optimization']},
+    {type:'skill-section', label:'DevOps',             tags:['Docker','Kubernetes','Rancher','GitLab CI/CD']},
+    {type:'skill-section', label:'Leadership',         tags:['Техническое лидерство','Менторинг','Code Review','Архитектурные решения']},
+  ] : [
     {type:'text', text:"My core tech stack:"},
     {type:'skill-section', label:'Languages',          tags:['Java','Kotlin']},
     {type:'skill-section', label:'Frameworks',         tags:['Spring Boot','Spring Ecosystem','Quarkus']},
@@ -459,7 +517,15 @@ CMDS['/skills'] = CMDS['/tech'] = ()=>({
 });
 
 CMDS['/experience'] = CMDS['/exp'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"6+ лет в banking, fintech, интеграциях и enterprise backend-системах:"},
+    {type:'card', role:'Technical Leader',      company:'Alatau City Bank',        period:'Январь 2025 — настоящее время', detail:'Руководство backend-направлением и трансформация монолитной архитектуры в масштабируемые микросервисы на Kotlin, Java, Spring Boot, PostgreSQL и RabbitMQ.'},
+    {type:'card', role:'Senior Java Developer', company:'Jusan Bank',              period:'Июль 2022 — декабрь 2024',      detail:'Модернизация backend-платформы, разработка микросервисов, интеграции внешних систем и постепенная декомпозиция монолита.'},
+    {type:'card', role:'Senior Java Developer', company:'Alfa-Bank Kazakhstan',    period:'Декабрь 2021 — июнь 2022',      detail:'Интеграция внешних сервисов, разработка переиспользуемых backend-микросервисов и участие в автоматизации инфраструктуры.'},
+    {type:'card', role:'Java Backend Developer',company:'Alfa-Bank Kazakhstan',    period:'Октябрь 2020 — декабрь 2021',   detail:'Разработка backend-сервисов для банковской инфраструктуры и улучшение CI/CD и deployment-процессов.'},
+    {type:'card', role:'Software Developer',    company:'ICORE-Integration LLP',   period:'Июнь 2019 — сентябрь 2020',     detail:'Enterprise-решения, backend-сервисы и интеграции на Java/Spring для промышленных компаний и банков.'},
+    {type:'card', role:'Менеджер сопровождения информационных систем', company:'Altyn Bank', period:'Август 2018 — июнь 2019', detail:'Сопровождение банковских информационных систем, мониторинг и решение технических инцидентов.'},
+  ] : [
     {type:'text', text:"6+ years across banking, fintech, integrations, and enterprise backend systems:"},
     {type:'card', role:'Technical Leader',      company:'Alatau City Bank',        period:'Jan 2025 – Present',       detail:'Leading backend initiatives and transformation from monolith to scalable microservices using Kotlin, Java, Spring Boot, PostgreSQL, and RabbitMQ.'},
     {type:'card', role:'Senior Java Developer', company:'Jusan Bank',              period:'Jul 2022 – Dec 2024',      detail:'Backend platform modernization, microservices development, external integrations, and gradual monolith decomposition in the banking ecosystem.'},
@@ -472,7 +538,12 @@ CMDS['/experience'] = CMDS['/exp'] = ()=>({
 });
 
 CMDS['/education'] = CMDS['/edu'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Образование:"},
+    {type:'card', role:"Магистратура — Вычислительная техника и программное обеспечение", company:'Казахская академия транспорта и коммуникаций (КазАТК)', period:'2017 — 2019', detail:'Магистерская программа по вычислительным системам и программному обеспечению.'},
+    {type:'card', role:"Бакалавр — Радиотехника и электроника", company:'Алматинский университет энергетики и связи (АУЭС)', period:'2013 — 2017', detail:'Инженерная база для работы с backend, инфраструктурой и распределёнными системами.'},
+    {type:'card', role:"Бакалавр — Экономика", company:'Московский энергетический институт (МЭИ)', period:'2014 — 2017', detail:'Экономический и бизнес-бэкграунд для продуктового и cross-functional взаимодействия.'},
+  ] : [
     {type:'text', text:"Academic background:"},
     {type:'card', role:"Master's Degree — Computer Science and Software", company:'Kazakh Academy of Transport and Communications (KazATC)', period:'2017 – 2019', detail:'Graduate studies focused on computing systems and software engineering.'},
     {type:'card', role:"Bachelor's Degree — Radio Engineering & Electronics", company:'Almaty University of Power Engineering and Telecommunications', period:'2013 – 2017', detail:'Engineering foundation for backend, infrastructure, and distributed systems work.'},
@@ -482,7 +553,11 @@ CMDS['/education'] = CMDS['/edu'] = ()=>({
 });
 
 CMDS['/projects'] = CMDS['/ventures'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Инженерный фокус:"},
+    {type:'card', role:'Backend Platform Modernization', company:'Banking & Fintech', period:'Текущий фокус', detail:'Декомпозиция монолитов, определение service boundaries, повышение надёжности и построение масштабируемых микросервисных платформ.'},
+    {type:'card', role:'Technical Leadership', company:'Engineering Teams', period:'Постоянно', detail:'Менторинг разработчиков, code review, согласование архитектуры с бизнес-задачами и развитие engineering best practices.'},
+  ] : [
     {type:'text', text:"Engineering focus areas:"},
     {type:'card', role:'Backend Platform Modernization', company:'Banking & Fintech', period:'Current focus', detail:'Decomposing monoliths, defining service boundaries, improving reliability, and building scalable microservice platforms.'},
     {type:'card', role:'Technical Leadership', company:'Engineering Teams', period:'Ongoing', detail:'Mentoring developers, leading code reviews, aligning architecture with business goals, and improving engineering best practices.'},
@@ -491,7 +566,14 @@ CMDS['/projects'] = CMDS['/ventures'] = ()=>({
 });
 
 CMDS['/stats'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Карьера в цифрах:"},
+    {type:'stats', items:[
+      {num:'6+', label:'Лет backend'},
+      {num:'5+', label:'Компаний'},
+      {num:'3',  label:'Языка'},
+    ]},
+  ] : [
     {type:'text', text:"Career at a glance:"},
     {type:'stats', items:[
       {num:'6+', label:'Yrs backend'},
@@ -503,7 +585,19 @@ CMDS['/stats'] = ()=>({
 });
 
 CMDS['/contact'] = ()=>({
-  blocks:[
+  blocks: lang === 'ru' ? [
+    {type:'text', text:"Как со мной связаться:"},
+    {type:'list', items:[
+      '📍 Алматы, Казахстан',
+      '📞 +7 747 434 4967',
+      '📧 dauren.work@gmail.com',
+      '💼 linkedin.com/in/torekhanov-dauren',
+      '🌐 daurentorekhanov.github.io',
+    ]},
+    {type:'link', text:'Открыть LinkedIn →', href:'https://linkedin.com/in/torekhanov-dauren'},
+    {type:'link', text:'Написать email →', href:'mailto:dauren.work@gmail.com'},
+    {type:'link', text:'Открыть сайт →', href:'https://daurentorekhanov.github.io'},
+  ] : [
     {type:'text', text:"Here's how to reach me:"},
     {type:'list', items:[
       '📍 Almaty, Kazakhstan',
@@ -521,12 +615,11 @@ CMDS['/contact'] = ()=>({
 
 CMDS['/download'] = CMDS['/cv'] = ()=>({
   blocks:[
-    {type:'text', text:"CV available in English and Russian:"},
+    {type:'text', text: lang === 'ru' ? "Резюме доступно на русском и английском:" : "CV available in English and Russian:"},
     {type:'downloads', items:[
-      {label:'EN PDF',  href:'files/Dauren%20Torekhanov%20EN.pdf'},
-      {label:'EN DOCX', href:'files/Dauren%20Torekhanov%20EN.docx'},
-      {label:'RU PDF',  href:'files/Dauren%20Torekhanov%20RU.pdf'},
-      {label:'RU DOCX', href:'files/Dauren%20Torekhanov%20RU.docx'},
+      ...(lang === 'ru'
+        ? [{label:'RU PDF', href:CV.ru.pdf},{label:'RU DOCX', href:CV.ru.docx},{label:'EN PDF', href:CV.en.pdf},{label:'EN DOCX', href:CV.en.docx}]
+        : [{label:'EN PDF', href:CV.en.pdf},{label:'EN DOCX', href:CV.en.docx},{label:'RU PDF', href:CV.ru.pdf},{label:'RU DOCX', href:CV.ru.docx}]),
     ]},
   ],
   suggestions:['/contact','/about'],
@@ -534,7 +627,7 @@ CMDS['/download'] = CMDS['/cv'] = ()=>({
 
 CMDS['/fun'] = ()=>({
   blocks:[
-    {type:'text', text:"Let's have some fun 🎉 Hit a button:"},
+    {type:'text', text: lang === 'ru' ? "Немного интерактива. Нажми кнопку:" : "Let's have some fun 🎉 Hit a button:"},
     {type:'fun-buttons'},
   ],
   suggestions:['/clear','/about'],
@@ -588,12 +681,12 @@ async function dispatch(rawText){
     await addBotMsg(blocks, suggestions);
   } else if(key.startsWith('/')){
     await addBotMsg(
-      [{type:'text', text:`Unknown command "${key}". Type /help to see what's available.`}],
+      [{type:'text', text: lang === 'ru' ? `Неизвестная команда "${key}". Введите /help.` : `Unknown command "${key}". Type /help to see what's available.`}],
       ['/help']
     );
   } else {
     await addBotMsg(
-      [{type:'text', text:"Try using a /command to explore my background. Type /help to see all options."}],
+      [{type:'text', text: lang === 'ru' ? "Используйте /команды, чтобы посмотреть мой профиль. Введите /help для списка команд." : "Try using a /command to explore my background. Type /help to see all options."}],
       ['/help','/about']
     );
   }
@@ -608,6 +701,9 @@ document.getElementById('inp').addEventListener('keydown', e=>{
 document.getElementById('snd').addEventListener('click', ()=>{
   const v = document.getElementById('inp').value.trim(); if(v) dispatch(v);
 });
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>setLang(btn.dataset.lang));
+});
 
 // ── CLICK RIPPLE ───────────────────────────────────────────────────────
 document.addEventListener('click', e=>{
@@ -619,12 +715,18 @@ document.addEventListener('click', e=>{
 });
 
 // ── INIT ───────────────────────────────────────────────────────────────
-(async function init(){
+async function restartIntro(){
+  if(busy) return;
+  msgsEl.innerHTML = '';
   await sleep(500);
   const typing = addTypingGroup();
   await sleep(500); typing.remove();
   await addBotMsg(
-    [
+    lang === 'ru' ? [
+      {type:'text', text:"👋 Привет! Это интерактивное резюме Даурена Тореханова."},
+      {type:'text', text:"Technical Lead / Senior Backend Engineer · 6+ лет · Алматы, Казахстан."},
+      {type:'text', text:"Введите команду или нажмите подсказку, чтобы посмотреть мой профиль."},
+    ] : [
       {type:'text', text:"👋 Hey! I'm Dauren Torekhanov's interactive resume."},
       {type:'text', text:"Technical Lead / Senior Backend Engineer · 6+ years · Almaty, Kazakhstan."},
       {type:'text', text:"Type a command or click a suggestion to explore my background."},
@@ -632,7 +734,9 @@ document.addEventListener('click', e=>{
     ['/about','/experience','/skills','/contact']
   );
   document.getElementById('inp').focus();
-})();
+}
+setLang(lang, false);
+restartIntro();
 
 // ── PARTICLES ──────────────────────────────────────────────────────────
 const pc = document.getElementById('pc');
