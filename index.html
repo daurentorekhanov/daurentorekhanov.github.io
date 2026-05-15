@@ -138,10 +138,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 /* MOBILE */
 @media(max-width:600px){
   .panel{border:none}
-  .head{padding:12px 14px}
+  .head{padding:12px 14px;flex-wrap:wrap;gap:10px}
   .av{width:36px;height:36px;font-size:.78rem}
   .head-name{font-size:.9rem}
-  .head-btn.hide-sm{display:none}
+  .head-info{flex:1 1 calc(100% - 50px)}
+  .head-sub{font-size:.72rem}
+  .head-acts{width:100%;justify-content:flex-end;gap:6px}
+  .head-btn{padding:6px 10px;font-size:.72rem}
   .lang-btn{padding:6px 8px}
   .messages{padding:14px;gap:12px}
   .msg-bubble{font-size:.88rem;padding:10px 14px}
